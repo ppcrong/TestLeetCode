@@ -8,40 +8,40 @@ public class Solution {
         int sum = 0;
         char[] chars = s.toCharArray();
         for (int i = chars.length - 1; i >= 0; i--) {
-            switch(chars[i]) {
-                case 'I':
-                    if (i < chars.length - 1 && (chars[i + 1] == 'V' || chars[i + 1] == 'X')) {
-                        sum -= 1;
-                    } else {
-                        sum += 1;
-                    }
-                    break;
-                case 'V':
-                    sum += 5;
-                    break;
-                case 'X':
-                    if (i < chars.length - 1 && (chars[i + 1] == 'L' || chars[i + 1] == 'C')) {
-                        sum -= 10;
-                    } else {
-                        sum += 10;
-                    }
-                    break;
-                case 'L':
-                    sum += 50;
-                    break;
-                case 'C':
-                    if (i < chars.length - 1 && (chars[i + 1] == 'D' || chars[i + 1] == 'M')) {
-                        sum -= 100;
-                    } else {
-                        sum += 100;
-                    }
-                    break;
-                case 'D':
-                    sum += 500;
-                    break;
-                case 'M':
-                    sum += 1000;
-                    break;
+            switch (chars[i]) {
+            case 'I':
+                if (i < chars.length - 1 && (chars[i + 1] == 'V' || chars[i + 1] == 'X')) {
+                    sum -= 1;
+                } else {
+                    sum += 1;
+                }
+                break;
+            case 'V':
+                sum += 5;
+                break;
+            case 'X':
+                if (i < chars.length - 1 && (chars[i + 1] == 'L' || chars[i + 1] == 'C')) {
+                    sum -= 10;
+                } else {
+                    sum += 10;
+                }
+                break;
+            case 'L':
+                sum += 50;
+                break;
+            case 'C':
+                if (i < chars.length - 1 && (chars[i + 1] == 'D' || chars[i + 1] == 'M')) {
+                    sum -= 100;
+                } else {
+                    sum += 100;
+                }
+                break;
+            case 'D':
+                sum += 500;
+                break;
+            case 'M':
+                sum += 1000;
+                break;
             }
         }
         return sum;
@@ -72,7 +72,8 @@ public class Solution {
         }
 
         for (int i = 0; i < strs.length; i++) {
-            if (strs[i].isEmpty()) return "";
+            if (strs[i].isEmpty())
+                return "";
         }
 
         char[][] charsArray = new char[strs.length][];
@@ -84,8 +85,7 @@ public class Solution {
         for (int i = 0; i < charsArray[0].length; i++) {
             for (int j = 1; j < strs.length; j++) {
 
-                if (i < charsArray[j].length &&
-                charsArray[0][i] == charsArray[j][i]) {
+                if (i < charsArray[j].length && charsArray[0][i] == charsArray[j][i]) {
                     if (j == strs.length - 1) {
                         cpLen = i + 1;
                     }
@@ -127,30 +127,28 @@ public class Solution {
     }
 
     /**
-     * Definition for singly-linked list.
-     * public class ListNode {
-     *     int val;
-     *     ListNode next;
-     *     ListNode(int x) { val = x; }
-     * }
+     * Definition for singly-linked list. public class ListNode { int val; ListNode
+     * next; ListNode(int x) { val = x; } }
      */
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode dummy = new ListNode(0);
         ListNode pre = dummy;
-        while(l1 != null && l2 != null){
-            if(l1.val <= l2.val) {
+        while (l1 != null && l2 != null) {
+            if (l1.val <= l2.val) {
                 pre.next = l1;
                 l1 = l1.next;
-            }else {
+            } else {
                 pre.next = l2;
                 l2 = l2.next;
             }
             pre = pre.next;
         }
-        
-        if(l1 != null) pre.next = l1;
-        if(l2 != null) pre.next = l2;
-        
+
+        if (l1 != null)
+            pre.next = l1;
+        if (l2 != null)
+            pre.next = l2;
+
         return dummy.next;
     }
 
@@ -180,14 +178,17 @@ public class Solution {
                 len++;
             }
         }
-        return len;        
+        return len;
     }
 
     public int strStr(String haystack, String needle) {
 
-        if (needle.isEmpty()) return 0;
-        if (haystack.isEmpty()) return -1;
-        if (haystack.length() < needle.length()) return -1;
+        if (needle.isEmpty())
+            return 0;
+        if (haystack.isEmpty())
+            return -1;
+        if (haystack.length() < needle.length())
+            return -1;
 
         for (int i = 0; i <= haystack.length() - needle.length(); i++) {
             if (needle.equals(haystack.substring(i, i + needle.length()))) {
@@ -195,7 +196,7 @@ public class Solution {
             }
         }
 
-        return -1;        
+        return -1;
     }
 
     public int searchInsert(int[] nums, int target) {
@@ -208,21 +209,20 @@ public class Solution {
                 } else {
                     continue;
                 }
-            }
-            else if (target == nums[i]) {
+            } else if (target == nums[i]) {
                 index = i;
                 break;
-            }
-            else {
-                    index = i;
-                    break;
+            } else {
+                index = i;
+                break;
             }
         }
         return index;
     }
 
     public String countAndSay(int n) {
-        if (n == 1) return "1";
+        if (n == 1)
+            return "1";
         String say = "1";
         for (int i = 0; i < n - 1; i++) {
             say = countAndSay(say);
@@ -236,7 +236,7 @@ public class Solution {
         for (int i = 0; i < chars.length; i++) {
             char base = chars[i];
             int num = 1;
-            while (i < chars.length - 1 && base == chars[i+1]) {
+            while (i < chars.length - 1 && base == chars[i + 1]) {
                 num++;
                 i++;
             }
@@ -252,25 +252,24 @@ public class Solution {
         for (int i = 1; i < nums.length; i++) {
             if (nums[i] > currentSum + nums[i]) {
                 currentSum = nums[i];
-            }
-            else{
+            } else {
                 currentSum += nums[i];
             }
-            if(currentSum > maxSum){
+            if (currentSum > maxSum) {
                 maxSum = currentSum;
             }
         }
         return maxSum;
         // int maxSum = nums[0];
         // for (int i = 0; i < nums.length; i++) {
-        //     int sum = 0;
-        //     for (int j = i; j < nums.length; j++) {
-        //         sum += nums[j];
-        //         maxSum = Math.max(sum, maxSum);
-        //         if (sum > maxSum) {
-        //             maxSum = sum;
-        //         }
-        //     }
+        // int sum = 0;
+        // for (int j = i; j < nums.length; j++) {
+        // sum += nums[j];
+        // maxSum = Math.max(sum, maxSum);
+        // if (sum > maxSum) {
+        // maxSum = sum;
+        // }
+        // }
         // }
         // return maxSum;
     }
@@ -295,8 +294,8 @@ public class Solution {
                     return newDigits;
                 }
                 continue;
-            }
-            else break;
+            } else
+                break;
         }
 
         digits[digits.length - 1]++;
@@ -311,60 +310,62 @@ public class Solution {
 
         // long value = 0;
         // for (int i = digits.length - 1; i >= 0; i--) {
-        //     value += digits[i] * (long) Math.pow(10, digits.length - i - 1);
+        // value += digits[i] * (long) Math.pow(10, digits.length - i - 1);
         // }
         // String digitsString = String.valueOf(value + 1);
         // char[] chars = digitsString.toCharArray();
         // int[] newDigits = new int[chars.length];
         // for (int i = 0; i < chars.length; i++) {
-        //     newDigits[i] = Integer.parseInt(Character.toString(chars[i]));
+        // newDigits[i] = Integer.parseInt(Character.toString(chars[i]));
         // }
         // return newDigits;
     }
 
     public String addBinary(String a, String b) {
-        int lenA = a.length()-1, lenB = b.length()-1;
+        int lenA = a.length() - 1, lenB = b.length() - 1;
         StringBuilder sb = new StringBuilder();
         int temp = 0;
-        while(lenA >= 0 || lenB >=0){
-            if(lenA >= 0 ) {
+        while (lenA >= 0 || lenB >= 0) {
+            if (lenA >= 0) {
                 temp += a.charAt(lenA--) - '0';
             }
-            if(lenB >= 0 ) {
+            if (lenB >= 0) {
                 temp += b.charAt(lenB--) - '0';
             }
             sb.append(temp % 2);
             temp /= 2;
         }
-        if(temp == 1) sb.append("1");
+        if (temp == 1)
+            sb.append("1");
         return sb.reverse().toString();
     }
 
     public int mySqrt(int x) {
         int start = 0, end = x;
-        while(start<end){
-            int mid = (end+start)/2+1;
-            if(mid>x/mid){
-                end = mid-1;
-            }else if(mid<x/mid){
+        while (start < end) {
+            int mid = (end + start) / 2 + 1;
+            if (mid > x / mid) {
+                end = mid - 1;
+            } else if (mid < x / mid) {
                 start = mid;
-            }else return mid;
+            } else
+                return mid;
         }
         return start;
         // int lastRoot = 0;
         // int root = 0;
         // int square = 0;
         // do {
-        //     lastRoot = root;
-        //     root++;
-        //     square = (int) Math.pow(root, 2);
+        // lastRoot = root;
+        // root++;
+        // square = (int) Math.pow(root, 2);
 
-        //     if (square > x) {
-        //         root = lastRoot;
-        //         break;
-        //     } else if (square == x) {
-        //         break;
-        //     } else continue;
+        // if (square > x) {
+        // root = lastRoot;
+        // break;
+        // } else if (square == x) {
+        // break;
+        // } else continue;
 
         // } while (true);
         // return (root > 46340) ? 46340 : root;
@@ -385,15 +386,16 @@ public class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         // System.arraycopy(nums2, 0, nums1, m, n);
         // Arrays.sort(nums1);
-        int p1 = m-1;
-        int p2 = n-1;
-        int p = m+n-1;
-        while(p1>=0 && p2>=0){
-            if(nums1[p1]<nums2[p2])
-                nums1[p--]=nums2[p2--];
-            else nums1[p--]=nums1[p1--];
-       
-            }    
+        int p1 = m - 1;
+        int p2 = n - 1;
+        int p = m + n - 1;
+        while (p1 >= 0 && p2 >= 0) {
+            if (nums1[p1] < nums2[p2])
+                nums1[p--] = nums2[p2--];
+            else
+                nums1[p--] = nums1[p1--];
+
+        }
         System.arraycopy(nums2, 0, nums1, 0, p2 + 1);
     }
 }
