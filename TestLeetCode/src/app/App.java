@@ -103,6 +103,12 @@ public class App {
             sb.append(plusOne[i] + " ");
         }
         System.out.println("plusOne = " + sb.toString());
+        plusOne = new Solution().plusOne(new int[] { 9, 9, 9, 9});
+        sb = new StringBuilder();
+        for (int i = 0; i < plusOne.length; i++) {
+            sb.append(plusOne[i] + " ");
+        }
+        System.out.println("plusOne = " + sb.toString());
 
         System.out.println("addBinary = " + new Solution().addBinary("11", "1"));
         System.out.println("addBinary = " + new Solution().addBinary("1010", "1011"));

@@ -278,28 +278,51 @@ public class Solution {
 
     public int[] plusOne(int[] digits) {
 
+        boolean is999 = true;
         for (int i = 0; i < digits.length; i++) {
-            if (digits[i] == 9) {
-                if (i == digits.length - 1) {
-                    int[] newDigits = new int[digits.length + 1];
-                    Arrays.fill(newDigits, 0);
-                    newDigits[0] = 1;
-                    return newDigits;
-                }
-                continue;
-            } else
+            if (digits[i] != 9) {
+                is999 = false;
                 break;
-        }
-
-        digits[digits.length - 1]++;
-        for (int i = digits.length - 1; i >= 0; i--) {
-            if (i - 1 >= 0) {
-                digits[i - 1] += digits[i] / 10;
             }
-            digits[i] %= 10;
+        }
+        if (is999) {
+            int[] newDigits = new int[digits.length + 1];
+            newDigits[0] = 1;
+            return newDigits;
         }
 
+        for (int i = digits.length - 1; i >= 0; i--) {
+            if (digits[i] < 9) {
+                digits[i]++;
+                return digits;
+            } else {
+                digits[i] = 0;
+            }
+        }
         return digits;
+
+        // for (int i = 0; i < digits.length; i++) {
+        //     if (digits[i] == 9) {
+        //         if (i == digits.length - 1) {
+        //             int[] newDigits = new int[digits.length + 1];
+        //             Arrays.fill(newDigits, 0);
+        //             newDigits[0] = 1;
+        //             return newDigits;
+        //         }
+        //         continue;
+        //     } else
+        //         break;
+        // }
+
+        // digits[digits.length - 1]++;
+        // for (int i = digits.length - 1; i >= 0; i--) {
+        //     if (i - 1 >= 0) {
+        //         digits[i - 1] += digits[i] / 10;
+        //     }
+        //     digits[i] %= 10;
+        // }
+
+        // return digits;
 
         // long value = 0;
         // for (int i = digits.length - 1; i >= 0; i--) {
