@@ -205,10 +205,7 @@ public class Solution {
                 } else {
                     continue;
                 }
-            } else if (target == nums[i]) {
-                index = i;
-                break;
-            } else {
+            } else if (target <= nums[i]) {
                 index = i;
                 break;
             }
